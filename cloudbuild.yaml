@@ -8,7 +8,7 @@ spec:
     delivery:
       server: smtp.gmail.com
       port: "587"
-      sender: ivarunkumar007@gmail.com
+      sender: varunkumar.inbaraj@gmail.com
       from: varunkumar.inbaraj@gmail.com
       recipients:
         - ivarunkumar007@gmail.com
