@@ -6,7 +6,7 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   id: start-qliksrv-1-np
   entrypoint: 'bash'
-  args: [ "gcloud", "compute", "instances", "start", "${_INSTANCE_NAME}", "--zone=${_ZONE}" ]
+  args: [ "gcloud compute instances start qliksrv-1 --zone=us-central1-a" ]
   
 
   
