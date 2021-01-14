@@ -5,7 +5,7 @@ steps:
    
 - name: gcr.io/cloud-builders/gcloud
   id: start-qliksrv-1-np
-  args: [ "compute", "instances", "start", "${_INSTANCE_NAME}", "--zone=${_ZONE}" ]
+  args: [ "config", "list" ]
   
 substitutions:
  _BUILDER_PROJECT: zenith-bi
