@@ -1,7 +1,13 @@
 steps:
+- name: gcr.io/cloud-builders/gcloud
+  entrypoint: 'bash'
+  args: [ '-c', "gcloud secrets versions access latest --secret=key_json --format='get(payload.data)' | tr '_-' '/+' | base64 -d > decrypted-data.txt" ]
+  
 - name: 'gcr.io/cloud-builders/gcloud'
   id: start-qliksrv-1-np
   args: [ "compute", "instances", "start", "${_INSTANCE_NAME}", "--zone=${_ZONE}" ]
+  
+
   
 substitutions:
  _BUILDER_PROJECT: zenith-bi
