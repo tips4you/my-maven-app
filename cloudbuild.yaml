@@ -4,9 +4,14 @@ steps:
   args: [ '-c', "gcloud secrets versions access latest --secret=key_json --format='get(payload.data)' | tr '_-' '/+' | base64 -d > decrypted-data.txt" ]
    
 - name: gcr.io/cloud-builders/gcloud
-  id: start-qliksrv-1-np
+  id: config-list
   args: [ "config", "list" ]
   
+- name: gcr.io/cloud-builders/gcloud
+  id: start-qliksrv-1-np
+  args: [ "compute", "instances", "start", "${_INSTANCE_NAME}", "--zone=${_ZONE}" ]
+  waitFor: [ "config-list" ]
+    
 substitutions:
  _BUILDER_PROJECT: zenith-bi
  _DIR: .
