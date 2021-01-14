@@ -1,20 +1,16 @@
-apiVersion: cloud-build-notifiers/v1
-kind: SMTPNotifier
-metadata:
-  name: example-smtp-notifier
-spec:
-  notification:
-    filter: build.status == Build.Status.SUCCESS
-    delivery:
-      server: smtp.gmail.com
-      port: "587"
-      sender: varunkumar.inbaraj@gmail.com
-      from: varunkumar.inbaraj@gmail.com
-      recipients:
-        - ivarunkumar007@gmail.com
-        # optional: more emails here
-      password:
-        secretRef: smtp-password
-  secrets:
-  - name: smtp-password
-    value: projects/781150265673/secrets/f-passwd/versions/latest
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: start-qliksrv-1-np
+  args: [ "compute", "instances", "start", "${_INSTANCE_NAME}", "--zone=${_ZONE}" ]
+  
+substitutions:
+ _BUILDER_PROJECT: zenith-bi
+ _DIR: .
+ _ZONE: us-central1-a
+ _SOURCE_DIR: autotest_compare/
+ _USER_NAME: sapcc 
+ _INSTANCE_NAME: qliksrv-1	 
+ _DESTINATION_DIR: /work/ 
+ _SSH_KEY_PATH: /builder/home/.ssh/google_compute_engine 
+ _SCRIPT_NAME: autocmp-batch-script.sh  
+ _REP_SCRIPT_NAME: send_report.py      
