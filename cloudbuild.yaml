@@ -13,7 +13,7 @@ steps:
   waitFor: [ "config-list" ]
     
 substitutions:
- _BUILDER_PROJECT: zenith-bi
+ _BUILDER_PROJECT: varun-bi
  _DIR: .
  _ZONE: us-central1-a
  _SOURCE_DIR: autotest_compare/
